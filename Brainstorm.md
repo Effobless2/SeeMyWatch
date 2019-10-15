@@ -1,0 +1,13 @@
+ - E-Commerce
+ - Customisation des montres
+    - Sélection des Accessoires avec vision en AR du Rendu sur la personne (Pas Obligé pour l'AR mais fun) <check/>
+    - Achat de la montre en fonction des configs sélectionnées => Ajout dans le panier <check/>
+ - Notifications d'events => sortie d'une nouvelle collection <check/>
+ - Autres fonctionnalités:
+    - Space Invaders avec des montres ? <check/>
+    - Agenda <check/>
+    - Arrière plan = Montre customisable Qui affiche l'heure actuelle (via l'horloge du téléphone) <check/>
+    - Informations sur l'entreprise <check/>
+    - Découverte du processus de création d'une montre étape par étape <check/>
+ - Accessible offline
+

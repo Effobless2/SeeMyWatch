@@ -1,0 +1,10 @@
+.vs
+bin
+obj
+*.user
+.vscode
+*.dll
+*.pdb
+TestResults
+Publish
+**\packages

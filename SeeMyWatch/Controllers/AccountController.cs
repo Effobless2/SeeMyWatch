@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SeeMyWatchDBConnection;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -36,8 +37,9 @@ namespace SeeMyWatch.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(Models.LoginUser model)
+        public async Task<IActionResult> Login(string login, string password)
         {
+            Console.WriteLine("");
             /*if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(
@@ -51,7 +53,7 @@ namespace SeeMyWatch.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }*/
 
-            return View(model);
+            return View();
         }
     }
 }

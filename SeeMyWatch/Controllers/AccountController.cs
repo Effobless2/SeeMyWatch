@@ -26,7 +26,6 @@ namespace SeeMyWatch.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            //await signInManager.SignOutAsync();
             return RedirectToAction("index", "home");
         }
 
@@ -39,21 +38,13 @@ namespace SeeMyWatch.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string login, string password)
         {
-            Console.WriteLine("");
-            /*if (ModelState.IsValid)
+            List<string> res = await dbConnector.UserAuthentification(login, password);
+
+            if (res.Count == 0) 
             {
-                var result = await signInManager.PasswordSignInAsync(
-                    model.Email, model.Password, model.RememberMe, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("index", "home");
-                }
-
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
-            }*/
-
-            return View();
+                return NotFound();
+            }
+            return Ok();
         }
     }
 }

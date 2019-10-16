@@ -47,8 +47,30 @@ namespace SeeMyWatchDBConnection
             return conn;
         }
 
+        public async Task<List<string>> UserAuthentification(string login, string password)
+        {
+            List<string> res = new List<string>();
+            using (IDbConnection conn = GetConnection())
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = $"SELECT * FROM UserAccount WHERE login='{login}' AND password='{password}'";
+                    
 
+                    using (IDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            res.Add((string)reader["login"]);
+                            res.Add((string)reader["password"]);
+                        }
+                    }
+                }
+            }
+            return res;
 
-
+           //hrow new NotImplementedException();
+        }
     }
 }

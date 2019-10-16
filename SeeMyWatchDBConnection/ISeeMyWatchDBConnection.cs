@@ -13,7 +13,6 @@ namespace SeeMyWatchDBConnection
         IDbConnection GetConnection();
 
         Task<List<string>> GetAllUsers();
-
-
+        Task<List<string>> UserAuthentification(string login, string password);
     }
 }

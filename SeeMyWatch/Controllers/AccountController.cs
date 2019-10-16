@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SeeMyWatchDBConnection;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SeeMyWatch.Controllers
@@ -7,14 +9,16 @@ namespace SeeMyWatch.Controllers
 
     public class AccountController : Controller
     {
+        private readonly ISeeMyWatchDBConnection dbConnector;
 
-        public AccountController()
+        public AccountController(ISeeMyWatchDBConnection dbCon)
         {
-          
+            dbConnector = dbCon;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            List<string> res = await dbConnector.GetAllUsers();
             return View();
         }
 

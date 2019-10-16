@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeMyWatch", "SeeMyWatch.csproj", "{E9CCC68E-539B-4D4F-8FD3-F29509B59611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeMyWatch", "SeeMyWatch.csproj", "{E9CCC68E-539B-4D4F-8FD3-F29509B59611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeMyWatchDBConnection", "..\SeeMyWatchDBConnection\SeeMyWatchDBConnection.csproj", "{892BF303-476A-4167-8181-DB7B03C9E3E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeMyWatchDBConnection", "..\SeeMyWatchDBConnection\SeeMyWatchDBConnection.csproj", "{892BF303-476A-4167-8181-DB7B03C9E3E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeMyWatch.BO", "..\SeeMyWatch.BO\SeeMyWatch.BO.csproj", "{A5CEC8BA-8232-4C00-B7F7-2443D068FA62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{892BF303-476A-4167-8181-DB7B03C9E3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892BF303-476A-4167-8181-DB7B03C9E3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892BF303-476A-4167-8181-DB7B03C9E3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CEC8BA-8232-4C00-B7F7-2443D068FA62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CEC8BA-8232-4C00-B7F7-2443D068FA62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CEC8BA-8232-4C00-B7F7-2443D068FA62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CEC8BA-8232-4C00-B7F7-2443D068FA62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

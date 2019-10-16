@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SeeMyWatch.Controllers.RequestsObjects;
 using SeeMyWatchDBConnection;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,10 @@ namespace SeeMyWatch.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string login, string password)
+        public async Task<IActionResult> Login([FromBody]LoginInfos content)
         {
+            string login = content.login;
+            string password = content.password;
             Console.WriteLine("");
             /*if (ModelState.IsValid)
             {

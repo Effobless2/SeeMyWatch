@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, AsyncStorage, Keyboard } from 'react-native';
 import React from 'react';
 import logo from '../assets/logo.png'
+import Passerelle from '../store/passerrelle'
 
  
 export default class Form extends React.Component {
@@ -13,8 +14,10 @@ export default class Form extends React.Component {
         }
     }
     _userSignup() {
-        const { username } = this.state.username;
-        const { password } = this.state.password;
+        let username = this.state.username;
+        let password = this.state.password;
+        let myPasserelle = new Passerelle();
+        myPasserelle.Connection(username, password)
 
       }
  /*

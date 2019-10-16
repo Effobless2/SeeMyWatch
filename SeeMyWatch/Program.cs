@@ -19,6 +19,7 @@ namespace SeeMyWatch
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://192.168.43.220:44338/")
                 .UseStartup<Startup>();
     }
 }

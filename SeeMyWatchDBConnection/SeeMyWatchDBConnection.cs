@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using SeeMyWatch.BO;
 using SQLite.Net.Platform.Win32;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,12 @@ using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Threading.Tasks;
 
+
 namespace SeeMyWatchDBConnection
 {
     public class SeeMyWatchDBConnection : ISeeMyWatchDBConnection
     {
-        private string connectionString;
-
+        private readonly string connectionString; 
         public SeeMyWatchDBConnection(IOptions<SqlServiceOptions> options)
         {
             connectionString = options.Value.ConnectionString;
@@ -47,9 +48,9 @@ namespace SeeMyWatchDBConnection
             return conn;
         }
 
-        public async Task<List<string>> UserAuthentification(string login, string password)
+        public async Task<Utilisateur> UserAuthentification(string login, string password)
         {
-            List<string> res = new List<string>();
+            Utilisateur res = null;
             using (IDbConnection conn = GetConnection())
             {
                 using (IDbCommand cmd = conn.CreateCommand())
@@ -62,15 +63,18 @@ namespace SeeMyWatchDBConnection
                     {
                         while (reader.Read())
                         {
-                            res.Add((string)reader["login"]);
-                            res.Add((string)reader["password"]);
+                            res = new Utilisateur()
+                            {
+                                login = (string)reader["login"],
+                                password = (string)reader["password"],
+                                UserId = Convert.ToInt32(reader["UserId"])
+                            };
+                            
                         }
                     }
                 }
             }
             return res;
-
-           //hrow new NotImplementedException();
         }
     }
 }

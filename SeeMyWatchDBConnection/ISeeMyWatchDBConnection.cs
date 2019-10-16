@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeeMyWatch.BO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -13,6 +14,7 @@ namespace SeeMyWatchDBConnection
         IDbConnection GetConnection();
 
         Task<List<string>> GetAllUsers();
-        Task<List<string>> UserAuthentification(string login, string password);
+        Task<Utilisateur> UserAuthentification(string login, string password);
+
     }
 }

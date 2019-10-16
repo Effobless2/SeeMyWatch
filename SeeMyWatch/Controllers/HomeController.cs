@@ -5,13 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SeeMyWatch.Models;
+using SeeMyWatchDBConnection;
 
 namespace SeeMyWatch.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ISeeMyWatchDBConnection dbConnector;
+        
+        public HomeController(ISeeMyWatchDBConnection dbCon)
         {
+            dbConnector = dbCon;
+        }
+        public async Task<IActionResult> Index()
+        {
+
+            List<string> res = await dbConnector.GetAllUsers();
             return View();
         }
 

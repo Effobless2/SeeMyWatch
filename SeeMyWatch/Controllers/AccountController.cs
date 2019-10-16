@@ -1,10 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SeeMyWatch.BO;
 using SeeMyWatchDBConnection;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SeeMyWatch.Controllers
@@ -28,12 +34,6 @@ namespace SeeMyWatch.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            return RedirectToAction("index", "home");
-        }
-
         [HttpGet]
         public IActionResult Login()
         {
@@ -44,12 +44,27 @@ namespace SeeMyWatch.Controllers
         public async Task<IActionResult> Login(string login, string password)
         {
             Utilisateur res = await dbConnector.UserAuthentification(login, password);
+
             if (res == null)
             {
                 return NotFound();
             }
-            _users.TryAdd(login, res);
-            return Ok();
+            Random reng = new Random();
+            int token = reng.Next(0,1234567998);
+            _users.TryAdd(token + "", res);
+            return Ok(new { token });
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                await HttpContext.SignOutAsync();
+                return Ok("LogOut !!!");
+
+            }
+
+            return Redirect("/");
         }
     }
 }

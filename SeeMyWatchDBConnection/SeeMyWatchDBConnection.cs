@@ -49,7 +49,7 @@ namespace SeeMyWatchDBConnection
         }
 
         public async Task<Utilisateur> UserAuthentification(string login, string password)
-        {
+        { 
             Utilisateur res = null;
             using (IDbConnection conn = GetConnection())
             {

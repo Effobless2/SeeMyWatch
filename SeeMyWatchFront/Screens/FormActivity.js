@@ -1,73 +1,33 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, AsyncStorage, Keyboard } from 'react-native';
 import React from 'react';
 import logo from '../assets/logo.png'
-import Passerelle from '../store/passerrelle'
+import ServerAPI from '../store/serverAPI'
 
- 
 export default class Form extends React.Component {
- 
+    static navigationOptions = {
+        title: 'Login',
+    };
     constructor(props){
         super(props);
+        
         this.state={
             username:'',
             password: ''
         }
     }
-    _userSignup() {
+    async _userSignup() {
         let username = this.state.username;
         let password = this.state.password;
-        Passerelle.Connection(username, password)
+        let result = await ServerAPI.Connection(username, password);
+        if (result == 404){
+            alert("Logins Incorrects");
+        }
+        else{
+            const { navigate } = this.props.navigation;
+            navigate("Home");
+        }
+    }
 
-      }
- /*
-    saveData =async()=>{
-        const {email,password} = this.state;
- 
-        //save data with asyncstorage
-        let loginDetails={
-            email: email,
-            password: password
-        }
- 
-        if(this.props.type !== 'Login')
-        {
-            AsyncStorage.setItem('loginDetails', JSON.stringify(loginDetails));
- 
-            Keyboard.dismiss();
-            alert("You successfully registered. Email: " + email + ' password: ' + password);
-            this.login();
-        }
-        else if(this.props.type == 'Login')
-        {
-            try{
-                let loginDetails = await AsyncStorage.getItem('loginDetails');
-                let ld = JSON.parse(loginDetails);
- 
-                if (ld.email != null && ld.password != null)
-                {
-                    if (ld.email == email && ld.password == password)
-                    {
-                        alert('Go in!');
-                    }
-                    else
-                    {
-                        alert('Email and Password does not exist!');
-                    }
-                }
- 
-            }catch(error)
-            {
-                alert(error);
-            }
-        }
-    }
- 
-    showData = async()=>{
-        let loginDetails = await AsyncStorage.getItem('loginDetails');
-        let ld = JSON.parse(loginDetails);
-        alert('email: '+ ld.email + ' ' + 'password: ' + ld.password);
-    }
- */
     render() {
         return(
             <View style={styles.container}>

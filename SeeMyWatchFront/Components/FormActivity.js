@@ -7,9 +7,11 @@ export default class Form extends React.Component {
  
     constructor(props){
         super(props);
+        
         this.state={
             username:'',
-            password: ''
+            password: '',
+            window: 0
         }
     }
     _userSignup() {

@@ -14,7 +14,7 @@ export default class Main extends React.Component{
 
     this.state = {
         favSize: undefined,
-        window: 0,
+        window: 1,
         items: [
             {
                 label: 'S',

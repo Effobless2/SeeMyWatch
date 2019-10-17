@@ -1,12 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FormActivity from './Components/FormActivity';
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <FormActivity/>
-    </View>
-  );
+import Custom from './customWatch';
+import Rendu from './rendu';
+
+export default class App extends React.Component {
+  render() {
+    return (
+        <Rendu />
+    )
+  }
 }
 
 const styles = StyleSheet.create({

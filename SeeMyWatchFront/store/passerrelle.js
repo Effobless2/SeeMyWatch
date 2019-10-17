@@ -1,4 +1,4 @@
-export default class Passerelle {
+class Passerelle {
     async Connection(login, password){
         let res = await fetch(`http://192.168.43.220:44338/Account/Login`,{
             method:"POST",
@@ -11,3 +11,6 @@ export default class Passerelle {
         return res.status;
     }
 }
+
+const myPasserelle = new Passerelle();
+export default myPasserelle;

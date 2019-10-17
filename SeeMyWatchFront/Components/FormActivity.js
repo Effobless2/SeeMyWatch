@@ -16,8 +16,7 @@ export default class Form extends React.Component {
     _userSignup() {
         let username = this.state.username;
         let password = this.state.password;
-        let myPasserelle = new Passerelle();
-        myPasserelle.Connection(username, password)
+        Passerelle.Connection(username, password)
 
       }
  /*

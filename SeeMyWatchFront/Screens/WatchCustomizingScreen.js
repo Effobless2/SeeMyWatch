@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text,TextInput, View , TouchableOpacity, Image,StatusBar} from 'react-native';
+import ServerAPI from '../store/serverAPI';
 
 import {CustomPicker} from 'react-native-custom-picker';
 import RNPickerSelect from 'react-native-picker-select';
@@ -90,6 +91,13 @@ export default class Main extends React.Component{
         };
     }
 
+    async buy() {
+        let result = await ServerAPI.Custom(this.state.favSize, this.state.favMatiere, this.state.favColor, this.state.favColor);
+        if(result == 200){
+            alert("Votre commande a bien été ajoutée à votre panier !");
+        }
+    }
+
     renderField(settings) {
         console.log(settings);
         const { selectedItem, defaultText, getLabel, clear } = settings
@@ -124,8 +132,14 @@ export default class Main extends React.Component{
     render() {
         return (
             <View style={styles.container}>
-                <Image style={styles.logo} source={require('../assets/logo.png')} />
-                <View style={{ paddingVertical: 5 }} />
+                <View style={{flexDirection: 'row', justifyContent: "space-between"}}>
+                    <Image style={styles.logo} source={require('../assets/logo.png')} />
+                    <TouchableOpacity
+                    title="Ajouter au panier"
+                    onPress={() =>this.buy()}>
+                        <Image source={require("../assets/kart.png")} style={styles.kart}/>
+                    </TouchableOpacity>
+                </View>
 
             
                 <Text>What&rsquo;s your Size?</Text>
@@ -294,6 +308,10 @@ container: {
   selectedDial: {
       width: 60,
       height: 60
+  },
+  kart: {
+      width: 75,
+      height: 75
   }
 });
 

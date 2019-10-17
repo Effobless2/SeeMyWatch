@@ -1,5 +1,5 @@
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
-import Main from '../Screens/Main'
+import Main from '../Screens/WatchCustomizingScreen'
 import Rendu from '../Screens/ARView';
 
 const MainNavigator = createMaterialBottomTabNavigator(

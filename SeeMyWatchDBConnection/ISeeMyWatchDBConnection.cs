@@ -15,6 +15,7 @@ namespace SeeMyWatchDBConnection
 
         Task<List<string>> GetAllUsers();
         Task<Utilisateur> UserAuthentification(string login, string password);
+        Task<Montre> AddMontre(string taille, string matiere, string couleurCadrant, string couleurBracelet);
 
     }
 }

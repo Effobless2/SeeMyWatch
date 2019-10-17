@@ -16,7 +16,10 @@ export default class Custom extends Component {
             bracelet: 'sport',
             boitier: 'rond',
             cadran: 'sport',
-            matiere: 'cuir'
+            matiere: 'cuir',
+            taille: 'm',
+            couleurBracelet: 'noir',
+            couleurCadrant: 'noir'
         }
     }
 
@@ -59,10 +62,18 @@ export default class Custom extends Component {
             <Picker.Item label="Sillicone fin" value="sillicone fin" />
             <Picker.Item label="Sillicone large" value="sillicone large" />
           </Picker>
+          <Picker
+            style={{width: 200}}
+            selectedValue={this.state.taille}
+            onValueChange={(ta) => this.setState({taille: ta})}>
+            <Picker.Item label="S" value="s" />
+            <Picker.Item label="M" value="m" />
+            <Picker.Item label="L" value="l" />
+          </Picker>
           <Text>The default bracelet is {this.state.bracelet}</Text>
           <Text>The default boitier is {this.state.boitier}</Text> 
           <Text>The default cadran is {this.state.cadran}</Text>
-          <Text>The default aiguille is {this.state.matiere}</Text> 
+          <Text>The default matiere is {this.state.matiere}</Text> 
           <View>
             {this.state.matiere == "cuir" ? (<Image style={styles.Image} source={require('./assets/bcuir.png')} />) 
             : this.state.matiere == "sillicone fin" ? (<Image style={styles.Image} source={require('./assets/bsf.png')} />)
@@ -71,7 +82,7 @@ export default class Custom extends Component {
           </View>
           <Button
           title="Ajouter au panier"
-          onPress={() => Alert.alert('Ajout au panier')}
+          onPress={Passerelle.Custom(this.state.taille, this.state.matiere, this.state.couleurCadrant, this.state.couleurBracelet)}
         />
            <Button
           title="Visualiser en 3D"

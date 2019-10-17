@@ -1,6 +1,6 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import FormActivity from './Screens/FormActivity';
+import FormActivity from './Screens/AuthenticationScreen';
 import WatchNav from './Navigator/WatchNavigator';
 console.disableYellowBox = true
 const MainNavigator = createStackNavigator({

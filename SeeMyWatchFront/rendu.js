@@ -5,7 +5,9 @@ import ExpoTHREE, { THREE, AR as ThreeAR } from 'expo-three';
 import { GraphicsView } from 'expo-graphics';
 import { Vector2 } from 'three';
 
-export default class Rendu extends React.Component{
+//const defaultAssetExts = require('./metro.config.js').assetExts;
+
+export default class Rendu extends React.Component {
   render() {
     console.log(Vector2);
     return (
@@ -13,7 +15,9 @@ export default class Rendu extends React.Component{
         isArEnabled
         onContextCreate={this.onContextCreate}
         onRender={this.onRender}
-      />
+      >
+        <Text>tset</Text>
+      </GraphicsView>
     );
   }
   onContextCreate = ({
@@ -54,25 +58,41 @@ export default class Rendu extends React.Component{
     console.log(this.magnetic.position);
     this.scene.add(this.magnetic);
 
-    // Light
-    this.scene.add(new THREE.AmbientLight(0x404040));
-    this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
-  };
+    // loadModel = async () => {
+    //   const obj = {
+    //     "museu.obj": require('./assets/watch_benzino_1.obj')
+    //   }
 
-  onRender = () => {
-    const screenCenter = new THREE.Vector2(0.5, 0.5);
-    this.magnetic.update(this.camera, screenCenter);
+    //   const model = await ExpoTHREE.loadAsync(
+    //     obj['museu.obj'],
+    //     null,
+    //     obj
+    //   );
 
-    this.renderer.render(this.scene, this.camera);
-  };
-}
+    //   // this ensures the model will be small enough to be viewed properly
+    //   ExpoTHREE.utils.scaleLongestSideToSize(model, 1);
 
+    //   this.scene.add(model)
+    // };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      // Light
+      this.scene.add(new THREE.AmbientLight(0x404040));
+      this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+    };
+
+    onRender = () => {
+      const screenCenter = new THREE.Vector2(0.5, 0.5);
+      this.magnetic.update(this.camera, screenCenter);
+
+      this.renderer.render(this.scene, this.camera);
+    };
+
+  }
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    });

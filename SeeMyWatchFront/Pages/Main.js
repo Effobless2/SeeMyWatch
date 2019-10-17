@@ -15,6 +15,7 @@ export default class Main extends React.Component{
     this.state = {
         favSize: undefined,
         window: 1,
+        TitleCadran:'Select a cadran...',
         items: [
             {
                 label: 'S',
@@ -181,11 +182,14 @@ render() {
 
             <View style={{ paddingVertical: 5 }} />
             <Text>Choisissiez le cadran?</Text>
-            <RNPickerSelect
+            <TouchableOpacity style={styles.Cadran}
                 placeholder={{
-                    label: 'Select a cadran...',
+                    label: this.state.TitleCadran,
                     value: null,
+                    
+                    
                 }}
+                onPress = {(titre) =>{ this.setState({TitleCadran: titre}); this.props.myParent.GoToCadran()}}
                 items={this.state.items4}
                 onValueChange={(value) => {
                     this.setState({
@@ -203,7 +207,9 @@ render() {
                 ref={(el) => {
                     this.inputRefs.picker2 = el;
                 }}
-            />
+            >
+                <Text> Select a cadran  </Text>
+            </TouchableOpacity>
 
             <View style={{ paddingVertical: 5 }} />
 
@@ -236,6 +242,13 @@ button: {
   marginVertical: 10,
   paddingVertical: 12
 },
+Cadran: {
+    width: 100,
+    backgroundColor: '#4f53cc',
+    borderRadius: 25,
+    marginVertical: 10,
+    paddingVertical: 12
+  },
 buttonText: {
   fontSize: 16,
   fontWeight: '500',

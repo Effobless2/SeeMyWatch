@@ -8,7 +8,8 @@ export default class Cadrans extends Component {
     constructor(props){
         super(props);
         this.state = {
-        columns:3
+    
+       columns:3
         }
     }
 
@@ -19,16 +20,19 @@ export default class Cadrans extends Component {
                 <FlatList
                     numColumns= {columns}
                     data={[
-                        require("../assets/cadrans/Cadran1.png"),
-                        require("../assets/cadrans/Cadran2.png"),
+                        {name:"Cadran1",img:require("../assets/cadrans/Cadran1.png")},
+                        {name:"Cadran1",img:require("../assets/cadrans/Cadran1.png")},
+                        {name:"Cadran1",img:require("../assets/cadrans/Cadran1.png")},
+                       /* require("../assets/cadrans/Cadran2.png"),
                         require("../assets/cadrans/Cadran3.png"),
                         require("../assets/cadrans/Cadran4.png"),
-                        require("../assets/cadrans/Cadran5.png"),
+                        require("../assets/cadrans/Cadran5.png"),*/
+
                     
                     ]}
                 renderItem={({item})=>{
                     console.log(ITEM_WIDTH)
-                 return  <ListItems itemWidth={ITEM_WIDTH/columns} image={item} />
+                 return  <ListItems itemWidth={ITEM_WIDTH/columns} image={item} onPress={() => this.props.myParent.GoToMain()}/>
                     
                 }
                 }

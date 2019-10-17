@@ -3,6 +3,7 @@ import { StyleSheet,Button, Text, View } from 'react-native';
 import Cadrans from './Pages/Cadrans';
 import Main from './Pages/Main';
 import FormActivity from './Components/FormActivity';
+import MainNavigue from './Pages/MainNavigue';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,19 +30,12 @@ export default class App extends React.Component {
         return(
           
           <View style={styles.container}>
-            <Main/>
-            <Button title="gotoview1" onPress={() => {this.setState({Screen : 2})}}/>
+            <MainNavigue/>
+            <Button title="gotoview1" onPress={() => {this.setState({Screen : 0})}}/>
           </View>
         );
 
-        if(this.state.Screen == 2)   
-        return(
-          
-          <View style={styles.container}>
-            <Cadrans/>
-            <Button title="gotoview1" onPress={() => {this.setState({Screen : 1})}}/>
-          </View>
-        );
+       
 
     }
   

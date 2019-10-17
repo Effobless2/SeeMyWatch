@@ -20,10 +20,10 @@ export default class ListItems extends React.Component{
     }
     render(){
         const {itemWidth, IMAGE}= this.props
-        console.log(itemWidth);
+        console.log(this.props.image.name);
         return(
            <TouchableWithoutFeedback
-            onPressIn = {() => this.animateIn()}
+            onPressIn = {() => {this.animateIn(); this.props.onPress(this.props.image.name)}}
             onPressOut = {() => this.animateOut()}
             >
                 <Animated.View style={{
@@ -34,7 +34,7 @@ export default class ListItems extends React.Component{
                             }
                         ]*/
                     }}>
-                    <Image  style={{width: itemWidth, height: 100}} resizeMode="contain" source= {this.props.image}></Image>
+                    <Image  style={{width: itemWidth, height: 100}} resizeMode="contain" source= {this.props.image.img}></Image>
 
                 </Animated.View>
                 

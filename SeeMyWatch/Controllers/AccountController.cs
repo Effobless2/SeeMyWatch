@@ -70,5 +70,17 @@ namespace SeeMyWatch.Controllers
 
             return Redirect("/");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> custom([FromBody]CustomInfos content)
+        {
+            string taille = content.taille;
+            string couleurBracelet = content.couleurBracelet;
+            string matiere = content.matiere;
+            string couleurCadrant = content.couleurCadrant;
+            Console.WriteLine(taille, couleurBracelet, matiere, couleurCadrant);
+            Montre res = await dbConnector.AddMontre(taille, matiere, couleurCadrant, couleurBracelet);
+            return Ok("");
+        }
     }
 }

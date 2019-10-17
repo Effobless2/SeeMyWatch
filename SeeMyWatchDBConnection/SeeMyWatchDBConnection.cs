@@ -76,5 +76,34 @@ namespace SeeMyWatchDBConnection
             }
             return res;
         }
+        public async Task<Montre> AddMontre(string taille, string matiere, string couleurCadrant, string couleurBracelet)
+        {
+            Montre res = null;
+            using (IDbConnection conn = GetConnection())
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = $"INSERT INTO customWatch(taille, matiere, couleurBracelet, couleurCadrant, UID) VALUES('{taille}', '{matiere}', '{couleurBracelet}', '{couleurCadrant}',1)";
+
+
+                    using (IDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            res = new Montre()
+                            {
+                                taille = (string)reader["taille"],
+                                matiere = (string)reader["matiere"],
+                                couleurBracelet = (string)reader["couleurBracelet"],
+                                couleurCadrant = (string)reader["couleurCadrant"]
+                            };
+
+                        }
+                    }
+                }
+            }
+            return res;
+        }
     }
 }

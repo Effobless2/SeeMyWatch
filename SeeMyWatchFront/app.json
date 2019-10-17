@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+       "bundleIdentifier": "com.hackaton.seemywatch"
+    },
+    "android": {
+      "package": "com.hackaton.seemywatch"
     }
   }
 }

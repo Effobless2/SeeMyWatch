@@ -1,17 +1,10 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Picker, Image } from 'react-native';
+import { StyleSheet, Text, View, Picker, Image, Button, Alert } from 'react-native';
 
 const styles = StyleSheet.create({
-    bigBlue: {
-      color: 'blue',
-      fontWeight: 'bold',
-      fontSize: 30,
-    },
-    red: {
-      color: 'red',
-    },
     Image: {
-        
+      height: 50,
+      width: 50
     }
   });
 
@@ -26,6 +19,13 @@ export default class Custom extends Component {
             matiere: 'cuir'
         }
     }
+
+    // onContextCreate = (gl: WebGLRenderingContext) => {
+    //   const rngl = gl.getExtension("RN");
+    //   gl.clearColor(1, 0, 0, 1);
+    //   gl.clear(gl.COLOR_BUFFER_BIT);
+    //   rngl.endFrame();
+    // };
 
     render() {
         return (
@@ -64,11 +64,19 @@ export default class Custom extends Component {
           <Text>The default cadran is {this.state.cadran}</Text>
           <Text>The default aiguille is {this.state.matiere}</Text> 
           <View>
-            {this.state.matiere == "cuir" ? (<Image source={require('./assets/bcuir.png')} />) 
-            : this.state.matiere == "sillicone fin" ? (<Image source={require('./assets/bsf.png')} />)
-            : <Image source={require('./assets/bsl.png')} />
+            {this.state.matiere == "cuir" ? (<Image style={styles.Image} source={require('./assets/bcuir.png')} />) 
+            : this.state.matiere == "sillicone fin" ? (<Image style={styles.Image} source={require('./assets/bsf.png')} />)
+            : <Image style={styles.Image} source={require('./assets/bsl.png')} />
             } 
           </View>
+          <Button
+          title="Ajouter au panier"
+          onPress={() => Alert.alert('Ajout au panier')}
+        />
+           <Button
+          title="Visualiser en 3D"
+          onPress={() => Alert.alert('Visualisation 3D')}
+        />
           </View>
         );
     }

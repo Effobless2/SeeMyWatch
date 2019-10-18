@@ -132,17 +132,12 @@ export default class Main extends React.Component{
     render() {
         return (
             <View style={styles.container}>
-                <View style={{flexDirection: 'row', justifyContent: "space-between"}}>
-                    <Image style={styles.logo} source={require('../assets/logo.png')} />
-                    <TouchableOpacity
-                    title="Ajouter au panier"
-                    onPress={() =>this.buy()}>
-                        <Image source={require("../assets/kart.png")} style={styles.kart}/>
-                    </TouchableOpacity>
+                <View style={{flexDirection: 'row', justifyContent: "center"}}>
+                    <Image style={styles.logo} source={require('../assets/carousel/IMG7.jpg')} />
                 </View>
 
             
-                <Text>What&rsquo;s your Size?</Text>
+                <Text style={styles.optionsLabel}>What&rsquo;s your Size?</Text>
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a size...',
@@ -169,7 +164,7 @@ export default class Main extends React.Component{
 
                 <View style={{ paddingVertical: 5 }} />
 
-                <Text>Choisissiez la matière du bracelet?</Text>
+                <Text style={styles.optionsLabel}>Choisissiez la matière du bracelet?</Text>
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a matiere...',
@@ -196,7 +191,7 @@ export default class Main extends React.Component{
 
                 <View style={{ paddingVertical: 5 }} />
 
-                <Text>Choisissiez la couleur du bracelet?</Text>
+                <Text style={styles.optionsLabel}>Choisissiez la couleur du bracelet?</Text>
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a color...',
@@ -222,7 +217,7 @@ export default class Main extends React.Component{
                 />
 
                 <View style={{ paddingVertical: 5 }} />
-                <Text>Choisissiez le cadran?</Text>
+                <Text style={styles.optionsLabel}>Choisissiez le cadran?</Text>
                 <CustomPicker
                     placeholder={'Select a dial...'}
                     options={this.dials}
@@ -235,6 +230,22 @@ export default class Main extends React.Component{
                         this.setState({favDial : value})
                     }}
                 />
+
+                <View>
+                <View style={{height: 30}} />
+                    
+                <TouchableOpacity
+                    title="Ajouter au panier"
+                    onPress={() =>this.buy()}
+                    >
+                        <View style={{flexDirection: 'column', alignItems: "center"}}>
+                            <Image source={require("../assets/kart.png")} style={styles.kart}/>
+                            <Text>Ajouter au Panier</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                
+                <View style={{height: 200}} />
             </View>
         );
     }
@@ -242,16 +253,16 @@ export default class Main extends React.Component{
 
 const styles = StyleSheet.create({
 container: {
+    height: "inherit",
     marginTop:20,
     paddingTop: 30,
-    backgroundColor: '#fff',
     justifyContent: 'center',
     paddingHorizontal: 0,
 },
 logo:{
-  width:150, 
-            height: 150,
-            justifyContent: "center",
+    width: "100%", 
+    height: 120,
+    justifyContent: "center",
 },
 button: {
   width: 300,
@@ -275,7 +286,6 @@ buttonText: {
   textAlign: 'center'
 },
 container: {
-    borderColor: 'grey',
     borderWidth: 1,
     padding: 15
   },
@@ -290,7 +300,6 @@ container: {
     padding: 10,
     alignItems: 'center'
   },
-  clearButton: { backgroundColor: 'grey', borderRadius: 5, marginRight: 10, padding: 5 },
   optionContainer: {
     padding: 10,
     borderBottomColor: 'grey',
@@ -310,8 +319,11 @@ container: {
       height: 60
   },
   kart: {
-      width: 75,
-      height: 75
+      width: 50,
+      height: 50
+  },
+  optionsLabel: {
+      color: '#4f83cc'
   }
 });
 
@@ -324,7 +336,7 @@ inputIOS: {
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 4,
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     color: 'black',
 },
 });

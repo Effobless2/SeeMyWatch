@@ -1,6 +1,6 @@
 class ServerAPI {
     Connection(login, password){
-        return fetch(`http://192.168.1.59:44338/Account/Login`,{
+        return fetch(`http://192.168.43.220:44338/Account/Login`,{
             method:"POST",
             body: JSON.stringify({login: login, password : password}),
             headers: {
@@ -11,7 +11,7 @@ class ServerAPI {
     }
 
     Custom(taille, matiere, couleurCadrant, couleurBracelet){
-        return fetch(`http://192.168.1.59:44338/Account/Custom`,{
+        return fetch(`http://192.168.43.220:44338/Account/Custom`,{
             method:"POST",
             body: JSON.stringify({taille: taille, matiere: matiere, couleurCadrant: couleurCadrant, couleurBracelet: couleurBracelet}),
             headers: {

@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, AsyncStorage, Keyboard } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, AsyncStorage, Keyboard, Dimensions } from 'react-native';
+import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
+import React, { Component } from 'react';
 import logo from '../assets/logo.png'
 import ServerAPI from '../store/serverAPI'
-
-export default class Form extends React.Component {
+import MyCaroussel from '../Components/HomeCaroussel';
+const { width: screenWidth } = Dimensions.get('window')
+export default class Form extends Component {
     static navigationOptions = {
         title: 'Login',
     };
@@ -57,17 +59,35 @@ export default class Form extends React.Component {
                 <TouchableOpacity style={styles.button} > 
                     <Text style={styles.buttonText} onPress={() => this._userSignup() } > Login  </Text>
                 </TouchableOpacity>
+
+                <View>
+                    <MyCaroussel/>
+                </View>
             </View>
             
         )
     }
-}
+    
+    _renderItem ({item, index}, parallaxProps) {
+        return (
+                <ParallaxImage
+                    source={item.url}
+                    containerStyle={styles.logo}
+                    style={styles.image}
+                    parallaxFactor={0.4}
+                    {...parallaxProps}
+                />
+        );
+    }
+} 
  
 const styles = StyleSheet.create({
     container: {
-        marginTop: 30,
+        marginTop: 80,
+        backgroundColor: "white",
         justifyContent: 'center',
         alignItems: 'center',
+        paddingTop: 50
     },
     inputBox: {
         width: 300,
@@ -92,7 +112,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     logo:{
-        width:200, 
-            height: 200
+        width:100, 
+            height: 100
     }
 });

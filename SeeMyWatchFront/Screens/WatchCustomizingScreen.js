@@ -26,16 +26,16 @@ export default class Main extends React.Component{
         ];
         this.materials = [
             {
-                label: 'Cuir',
-                value: 'Cuir',
+                label: 'Leather',
+                value: 'Leather',
             },
             {
-                label: 'Siliconne Large',
-                value: 'Siliconne Large',
+                label: 'Wide Silicone',
+                value: 'Wide Silicone',
             },
             {
-                label: 'Siliconne Fin',
-                value: 'Siliconne Fin',
+                label: 'Thin Silicone',
+                value: 'Thin Silicone',
             },
         ];
         this.colours = [
@@ -50,34 +50,140 @@ export default class Main extends React.Component{
                 value: 'Black',
             },
             {
-                color: "#FFFFFF",
+                color: "#000000",
                 label: 'White',
                 value: 'White',
+            },
+            {
+                color: "pink",
+                label: 'Pink',
+                value: 'Pink',
+            },
+            {
+                color: "gold",
+                label: 'Gold',
+                value: 'Gold',
+            },
+            {
+                color: "silver",
+                label: 'Silver',
+                value: 'Silver',
+            },
+            {
+                color: "orange",
+                label: 'Orange',
+                value: 'Orange',
             },
         ];
         this.dials = [
             {
-                label: "Cadran1",
+                label: "White",
                 img: require("../assets/cadrans/Cadran1.png")
             },
             {
-                label: "Cadran2",
+                label: "Black White",
                 img: require("../assets/cadrans/Cadran2.png")
             },
             {
-                label: "Cadran3",
+                label: "Orange White",
                 img: require("../assets/cadrans/Cadran3.png")
             },
             {
-                label: "Cadran4",
+                label: "Red White",
                 img: require("../assets/cadrans/Cadran4.png")
             },
             {
-                label: "Cadran5",
+                label: "Blue White",
                 img: require("../assets/cadrans/Cadran5.png")
+            },
+            {
+                label: "Kaki White",
+                img: require("../assets/cadrans/Cadran6.png")
+            },
+            {
+                label: "Turquoise Green",
+                img: require("../assets/cadrans/Cadran7.png")
+            },
+            {
+                label: "Green",
+                img: require("../assets/cadrans/Cadran8.png")
+            },
+            {
+                label: "Gold",
+                img: require("../assets/cadrans/Cadran9.png")
+            },
+            {
+                label: "Orange",
+                img: require("../assets/cadrans/Cadran10.png")
+            },
+            {
+                label: "Brick",
+                img: require("../assets/cadrans/Cadran11.png")
+            },
+            {
+                label: "Burgundy",
+                img: require("../assets/cadrans/Cadran12.png")
+            },
+            {
+                label: "Blue",
+                img: require("../assets/cadrans/Cadran13.png")
+            },
+            {
+                label: "Gray",
+                img: require("../assets/cadrans/Cadran15.png")
+            },
+            {
+                label: "Purple",
+                img: require("../assets/cadrans/Cadran16.png")
+            },
+            {
+                label: "Ocean",
+                img: require("../assets/cadrans/Cadran17.png")
+            },
+            {
+                label: "Chocolate",
+                img: require("../assets/cadrans/Cadran18.png")
+            },
+            {
+                label: "Gradient Purlple White",
+                img: require("../assets/cadrans/Cadran19.png")
+            },
+            {
+                label: "Gradient Green",
+                img: require("../assets/cadrans/Cadran20.png")
+            },
+            {
+                label: "Gradient Purple",
+                img: require("../assets/cadrans/Cadran21.png")
+            },
+            {
+                label: "Gradient Blue",
+                img: require("../assets/cadrans/Cadran22.png")
+            },
+            {
+                label: "Gradient Gray",
+                img: require("../assets/cadrans/Cadran23.png")
+            },
+            {
+                label: "Gradient Dark",
+                img: require("../assets/cadrans/Cadran24.png")
+            },
+            {
+                label: "Gradient Brick",
+                img: require("../assets/cadrans/Cadran25.png")
+            },
+            {
+                label: "Gradient Chocolate",
+                img: require("../assets/cadrans/Cadran26.png")
+            },
+            {
+                label: "Gradient Gold",
+                img: require("../assets/cadrans/Cadran27.png")
+            },
+            {
+                label: "Gradient Red",
+                img: require("../assets/cadrans/Cadran28.png")
             }
-
-        
         ]
 
         this.inputRefs = {};
@@ -122,9 +228,11 @@ export default class Main extends React.Component{
         const { item, getLabel } = settings
         return (
           <View style={styles.optionContainer}>
-            <View style={[styles.innerContainer, {flexDirection: 'row', alignItems: "center", justifyContent: "space-evenly"}]}>
+            <View style={[styles.innerContainer, {flexDirection: 'row', alignItems: "center", justifyContent: "space-between"}]}>
               <Image source={item.img} style={{height: 90, width: 90}}/>
-              <Text style={{ color: item.color}}>{getLabel(item)}</Text>
+              <View style={{justifyContent: 'center'}}>
+                <Text style={{ color: item.color}}>{getLabel(item)}</Text>
+              </View>
             </View>
           </View>
         )
@@ -137,7 +245,7 @@ export default class Main extends React.Component{
                 </View>
 
             
-                <Text style={styles.optionsLabel}>What&rsquo;s your Size?</Text>
+                <Text style={styles.optionsLabel}>Choose your size:</Text>
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a size...',
@@ -164,10 +272,10 @@ export default class Main extends React.Component{
 
                 <View style={{ paddingVertical: 5 }} />
 
-                <Text style={styles.optionsLabel}>Choisissiez la matière du bracelet?</Text>
+                <Text style={styles.optionsLabel}>Choose your strap's material:</Text>
                 <RNPickerSelect
                     placeholder={{
-                        label: 'Select a matiere...',
+                        label: 'Select a material...',
                         value: null,
                     }}
                     items={this.materials}
@@ -191,7 +299,7 @@ export default class Main extends React.Component{
 
                 <View style={{ paddingVertical: 5 }} />
 
-                <Text style={styles.optionsLabel}>Choisissiez la couleur du bracelet?</Text>
+                <Text style={styles.optionsLabel}>Choose your strap's color:</Text>
                 <RNPickerSelect
                     placeholder={{
                         label: 'Select a color...',
@@ -217,7 +325,7 @@ export default class Main extends React.Component{
                 />
 
                 <View style={{ paddingVertical: 5 }} />
-                <Text style={styles.optionsLabel}>Choisissiez le cadran?</Text>
+                <Text style={styles.optionsLabel}>Choose your dial?</Text>
                 <CustomPicker
                     placeholder={'Select a dial...'}
                     options={this.dials}
@@ -240,7 +348,7 @@ export default class Main extends React.Component{
                     >
                         <View style={{flexDirection: 'column', alignItems: "center"}}>
                             <Image source={require("../assets/kart.png")} style={styles.kart}/>
-                            <Text>Ajouter au Panier</Text>
+                            <Text>Add to cart!</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

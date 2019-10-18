@@ -22,7 +22,7 @@ export default class Form extends Component {
         let password = this.state.password;
         let result = await ServerAPI.Connection(username, password);
         if (result == 404){
-            alert("Logins Incorrects");
+            alert("Login or password incorect!");
         }
         else{
             const { navigate } = this.props.navigation;
@@ -90,11 +90,12 @@ const styles = StyleSheet.create({
         paddingTop: 50
     },
     inputBox: {
+        height: 40,
         width: 300,
         backgroundColor: '#eeeeee', 
         borderRadius: 25,
         paddingHorizontal: 16,
-        fontSize: 20,
+        fontSize: 15,
         color: '#002f6c',
         marginVertical: 10
     },

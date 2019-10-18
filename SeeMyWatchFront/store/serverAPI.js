@@ -7,7 +7,7 @@ class ServerAPI {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             }
-        }).then((result) => {/*return result.status;*/ return 200})
+        }).then((result) => {return result.status;})
     }
 
     Custom(taille, matiere, couleurCadrant, couleurBracelet){
